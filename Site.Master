@@ -1,0 +1,46 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.Master.cs" Inherits="SiteMaster" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Online Banking System</title>
+    <link href="~/Styles/site.css" rel="stylesheet" type="text/css" runat="server" />
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="topbar">
+            <div class="container nav-wrap">
+                <a href="Default.aspx" class="brand">Esskay Sahab Bank</a>
+                <nav class="nav-menu">
+                    <a href="Default.aspx">Home</a>
+                    <a href="About.aspx">About</a>
+                    <a href="Contact.aspx">Contact</a>
+                    <asp:PlaceHolder ID="phAdminLinks" runat="server" Visible="false">
+                        <a href="AdminDashboard.aspx">Admin Dashboard</a>
+                    </asp:PlaceHolder>
+                    <asp:PlaceHolder ID="phUserLinks" runat="server" Visible="false">
+                        <a href="UserDashboard.aspx">User Dashboard</a>
+                    </asp:PlaceHolder>
+                </nav>
+                <div class="nav-right">
+                    <asp:Label ID="lblWelcome" runat="server" CssClass="welcome-text" />
+                    <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/Login.aspx" CssClass="btn btn-outline">Login</asp:HyperLink>
+                    <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-primary" Text="Logout" Visible="false" OnClick="btnLogout_Click" />
+                </div>
+            </div>
+        </header>
+
+        <main class="page-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; <%: DateTime.Now.Year %> BankCC - Secure Online Banking.</p>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
